@@ -1,0 +1,848 @@
+[
+  {
+    "id": "c1",
+    "name": "Vertigo Guatemala Hunapu",
+    "rating": 2,
+    "finalRecipe": "5'1, 18g to 36-37g",
+    "brews": [
+      {
+        "id": "b1_1",
+        "grind": "5'1",
+        "dose": 15.6,
+        "yield": 31,
+        "ratio": "2.0",
+        "time": "22s",
+        "comments": "Intense, harsh, sour",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b1_2",
+        "grind": "5",
+        "dose": 16,
+        "yield": 32,
+        "ratio": "2.0",
+        "time": "25s",
+        "comments": "Intense, less sour",
+        "timestamp": "Log 2"
+      },
+      {
+        "id": "b1_3",
+        "grind": "5",
+        "dose": 16,
+        "yield": 39,
+        "ratio": "2.4",
+        "time": "23s",
+        "comments": "(might’ve loosened tamp). Intense, bitter",
+        "timestamp": "Log 3"
+      },
+      {
+        "id": "b1_4",
+        "grind": "5",
+        "dose": 18,
+        "yield": 36,
+        "ratio": "2.0",
+        "time": "27s",
+        "comments": "Still intense. Sweeter.",
+        "timestamp": "Log 4"
+      },
+      {
+        "id": "b1_5",
+        "grind": "5",
+        "dose": 18,
+        "yield": 37,
+        "ratio": "2.1",
+        "time": "27s",
+        "comments": "91C. more sour",
+        "timestamp": "Log 5"
+      },
+      {
+        "id": "b1_6",
+        "grind": "5",
+        "dose": 18,
+        "yield": 31,
+        "ratio": "1.7",
+        "time": "26s",
+        "comments": "cold portafilter. Intense sour, but not too bad.",
+        "timestamp": "Log 6"
+      },
+      {
+        "id": "b1_7",
+        "grind": "5'1",
+        "dose": 18,
+        "yield": 36,
+        "ratio": "2.0",
+        "time": "22s",
+        "comments": "A lil more sour than 5'?",
+        "timestamp": "Log 7"
+      },
+      {
+        "id": "b1_8",
+        "grind": "5'1",
+        "dose": 18,
+        "yield": 39,
+        "ratio": "2.2",
+        "time": "23s",
+        "comments": "Too bitter.",
+        "timestamp": "Log 8"
+      }
+    ]
+  },
+  {
+    "id": "c2",
+    "name": "Partners Bedford",
+    "rating": 3.5,
+    "finalRecipe": "6, 16g to 32-34g, 90C",
+    "brews": [
+      {
+        "id": "b2_1",
+        "grind": "5'1",
+        "dose": 18,
+        "yield": 32,
+        "ratio": "1.8",
+        "time": "30s",
+        "comments": "(scale error). Sour.",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b2_2",
+        "grind": "5'2",
+        "dose": 18,
+        "yield": 36,
+        "ratio": "2.0",
+        "time": "38s",
+        "comments": "(?32+X)s. Good.",
+        "timestamp": "Log 2"
+      },
+      {
+        "id": "b2_3",
+        "grind": "6",
+        "dose": 17,
+        "yield": 34,
+        "ratio": "2.0",
+        "time": "23s",
+        "comments": "(?17+X)s. A little sour?",
+        "timestamp": "Log 3"
+      },
+      {
+        "id": "b2_4",
+        "grind": "6",
+        "dose": 15,
+        "yield": 32,
+        "ratio": "2.1",
+        "time": "18s",
+        "comments": "90C. good!",
+        "timestamp": "Log 4"
+      },
+      {
+        "id": "b2_5",
+        "grind": "6",
+        "dose": 16,
+        "yield": 34,
+        "ratio": "2.1",
+        "time": "19s",
+        "comments": "90C. Sour? Good!",
+        "timestamp": "Log 5"
+      },
+      {
+        "id": "b2_6",
+        "grind": "6",
+        "dose": 18,
+        "yield": 37,
+        "ratio": "2.1",
+        "time": "23s",
+        "comments": "90C. Bitter.",
+        "timestamp": "Log 6"
+      }
+    ]
+  },
+  {
+    "id": "c3",
+    "name": "嫣红",
+    "rating": 4,
+    "finalRecipe": "",
+    "brews": [
+      {
+        "id": "b3_1",
+        "grind": "6",
+        "dose": 16,
+        "yield": 32.5,
+        "ratio": "2.0",
+        "time": "21s",
+        "comments": "Sour.",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b3_2",
+        "grind": "6",
+        "dose": 16,
+        "yield": 37,
+        "ratio": "2.3",
+        "time": "20s",
+        "comments": "Good!",
+        "timestamp": "Log 2"
+      }
+    ]
+  },
+  {
+    "id": "c4",
+    "name": "兰溪",
+    "rating": 3.5,
+    "finalRecipe": "",
+    "brews": [
+      {
+        "id": "b4_1",
+        "grind": "6",
+        "dose": 16,
+        "yield": 36.7,
+        "ratio": "2.3",
+        "time": "20s?",
+        "comments": "Sour.",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b4_2",
+        "grind": "5'2",
+        "dose": 16,
+        "yield": 36.6,
+        "ratio": "2.3",
+        "time": "14s",
+        "comments": "Sour.",
+        "timestamp": "Log 2"
+      },
+      {
+        "id": "b4_3",
+        "grind": "5'1",
+        "dose": 16,
+        "yield": 37.1,
+        "ratio": "2.3",
+        "time": "17s",
+        "comments": "Good? A bit intense.",
+        "timestamp": "Log 3"
+      }
+    ]
+  },
+  {
+    "id": "c5",
+    "name": "采莳",
+    "rating": 3,
+    "finalRecipe": "",
+    "brews": [
+      {
+        "id": "b5_1",
+        "grind": "6",
+        "dose": 16,
+        "yield": 35.8,
+        "ratio": "2.2",
+        "time": "20s",
+        "comments": "A little sour.",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b5_2",
+        "grind": "5'2",
+        "dose": 16,
+        "yield": 34.6,
+        "ratio": "2.2",
+        "time": "21s",
+        "comments": "Sour.",
+        "timestamp": "Log 2"
+      },
+      {
+        "id": "b5_3",
+        "grind": "5'2",
+        "dose": 16,
+        "yield": 38.9,
+        "ratio": "2.4",
+        "time": "30s",
+        "comments": "?!",
+        "timestamp": "Log 3"
+      }
+    ]
+  },
+  {
+    "id": "c6",
+    "name": "永昌意",
+    "rating": 3.5,
+    "finalRecipe": "",
+    "brews": [
+      {
+        "id": "b6_1",
+        "grind": "6",
+        "dose": 16,
+        "yield": 31.3,
+        "ratio": "2.0",
+        "time": "25s",
+        "comments": "A little bitter.",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b6_2",
+        "grind": "6'1",
+        "dose": 16,
+        "yield": 30.1,
+        "ratio": "1.9",
+        "time": "18s",
+        "comments": "Sour.",
+        "timestamp": "Log 2"
+      },
+      {
+        "id": "b6_3",
+        "grind": "6'1",
+        "dose": 16,
+        "yield": 35.5,
+        "ratio": "2.2",
+        "time": "25s",
+        "comments": "Good. A tiny bitter.",
+        "timestamp": "Log 3"
+      }
+    ]
+  },
+  {
+    "id": "c7",
+    "name": "蜜韵",
+    "rating": 4,
+    "finalRecipe": "",
+    "brews": [
+      {
+        "id": "b7_1",
+        "grind": "5'2",
+        "dose": 16,
+        "yield": 38.5,
+        "ratio": "2.4",
+        "time": "23s",
+        "comments": "A tiny tiny bitter.",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b7_2",
+        "grind": "5'2",
+        "dose": 18.6,
+        "yield": 41.3,
+        "ratio": "2.2",
+        "time": "27s",
+        "comments": "Good!",
+        "timestamp": "Log 2"
+      }
+    ]
+  },
+  {
+    "id": "c8",
+    "name": "DAK Peach on the beach",
+    "rating": 5,
+    "finalRecipe": "5'1, 18g to 39.5g, 25s. Good!",
+    "brews": [
+      {
+        "id": "b8_1",
+        "grind": "5'2",
+        "dose": 16,
+        "yield": 33.7,
+        "ratio": "2.1",
+        "time": "18s",
+        "comments": "A little sour.",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b8_2",
+        "grind": "5'1",
+        "dose": 16,
+        "yield": 36.3,
+        "ratio": "2.3",
+        "time": "20s",
+        "comments": "Bitter.",
+        "timestamp": "Log 2"
+      },
+      {
+        "id": "b8_3",
+        "grind": "5'1",
+        "dose": 16,
+        "yield": 35.8,
+        "ratio": "2.2",
+        "time": "19s",
+        "comments": "Good. A little sour?",
+        "timestamp": "Log 3"
+      },
+      {
+        "id": "b8_4",
+        "grind": "5'1",
+        "dose": 18,
+        "yield": 39.5,
+        "ratio": "2.2",
+        "time": "25s",
+        "comments": "FINAL 🌟 Good!",
+        "timestamp": "Log 4"
+      },
+      {
+        "id": "b8_5",
+        "grind": "5'1",
+        "dose": 16,
+        "yield": 33.6,
+        "ratio": "2.1",
+        "time": "18s",
+        "comments": "Good!",
+        "timestamp": "Log 5"
+      }
+    ]
+  },
+  {
+    "id": "c9",
+    "name": "新寨 铁皮卡日晒（3mo old）",
+    "rating": 3.5,
+    "finalRecipe": "",
+    "brews": [
+      {
+        "id": "b9_1",
+        "grind": "4'2",
+        "dose": 18,
+        "yield": 39.2,
+        "ratio": "2.2",
+        "time": "30s",
+        "comments": "A little bitter. 5x milk is good.",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b9_2",
+        "grind": "5",
+        "dose": 17.8,
+        "yield": 36,
+        "ratio": "2.0",
+        "time": "24s",
+        "comments": "Too acidic.",
+        "timestamp": "Log 2"
+      },
+      {
+        "id": "b9_3",
+        "grind": "5",
+        "dose": 18.2,
+        "yield": 37.3,
+        "ratio": "2.0",
+        "time": "24s",
+        "comments": "Good!",
+        "timestamp": "Log 3"
+      }
+    ]
+  },
+  {
+    "id": "c10",
+    "name": "Hydrangea Peach Lavender Puchao",
+    "rating": 3.5,
+    "finalRecipe": "Goes better in Americano / (not too much) coconut milk",
+    "brews": [
+      {
+        "id": "b10_1",
+        "grind": "5",
+        "dose": 18,
+        "yield": 38.9,
+        "ratio": "2.2",
+        "time": "12s",
+        "comments": "Good! Maybe a tiny acidic?",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b10_2",
+        "grind": "4'1",
+        "dose": 18,
+        "yield": 41.2,
+        "ratio": "2.3",
+        "time": "15s",
+        "comments": "Good!! Goes better in Americano.",
+        "timestamp": "Log 2"
+      }
+    ]
+  },
+  {
+    "id": "c11",
+    "name": "Vertigo Baroque",
+    "rating": 4,
+    "finalRecipe": "7, 18g to 40g, 30s. Go well with 180g milk hot latte.",
+    "brews": [
+      {
+        "id": "b11_1",
+        "grind": "7",
+        "dose": 18,
+        "yield": 40,
+        "ratio": "2.2",
+        "time": "30s",
+        "comments": "Good! Can be coarser. 180g hot latte.",
+        "timestamp": "Log 1"
+      }
+    ]
+  },
+  {
+    "id": "c12",
+    "name": "Blue Bottle Hayes Valley",
+    "rating": 4,
+    "finalRecipe": "6'2, 18g to 40g, 26s + 5 ice + milk to 220g",
+    "brews": [
+      {
+        "id": "b12_1",
+        "grind": "6'2",
+        "dose": 18,
+        "yield": 40,
+        "ratio": "2.2",
+        "time": "26s",
+        "comments": "5 ice + milk to 220g",
+        "timestamp": "Log 1"
+      }
+    ]
+  },
+  {
+    "id": "c13",
+    "name": "Sight glass Crown Point",
+    "rating": 4,
+    "finalRecipe": "",
+    "brews": [
+      {
+        "id": "b13_1",
+        "grind": "6",
+        "dose": 17,
+        "yield": 40,
+        "ratio": "2.4",
+        "time": "18s",
+        "comments": "Not bad, can be finer.",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b13_2",
+        "grind": "5'2",
+        "dose": 18,
+        "yield": 40,
+        "ratio": "2.2",
+        "time": "24s",
+        "comments": "5 ice + milk to 240g",
+        "timestamp": "Log 2"
+      }
+    ]
+  },
+  {
+    "id": "c14",
+    "name": "云景咖啡",
+    "rating": 3.5,
+    "finalRecipe": "",
+    "brews": [
+      {
+        "id": "b14_1",
+        "grind": "7",
+        "dose": 18,
+        "yield": 39.6,
+        "ratio": "2.2",
+        "time": "22s",
+        "comments": "",
+        "timestamp": "Log 1"
+      }
+    ]
+  },
+  {
+    "id": "c15",
+    "name": "Sight glass Toketee",
+    "rating": 3.5,
+    "finalRecipe": "Stop at 36g, otherwise a bit bitter. Ice better than hot.",
+    "brews": [
+      {
+        "id": "b15_1",
+        "grind": "7",
+        "dose": 18,
+        "yield": 45,
+        "ratio": "2.5",
+        "time": "15s",
+        "comments": "Drip blend",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b15_2",
+        "grind": "5'2",
+        "dose": 18,
+        "yield": 44,
+        "ratio": "2.4",
+        "time": "23s",
+        "comments": "",
+        "timestamp": "Log 2"
+      },
+      {
+        "id": "b15_3",
+        "grind": "5'1",
+        "dose": 18,
+        "yield": 39,
+        "ratio": "2.2",
+        "time": "24s",
+        "comments": "Stop at 36g. 5 ice + milk to 210g.",
+        "timestamp": "Log 3"
+      }
+    ]
+  },
+  {
+    "id": "c16",
+    "name": "Heart Ethiopia Gerba Dogo Sodu",
+    "rating": 4,
+    "finalRecipe": "",
+    "brews": [
+      {
+        "id": "b16_1",
+        "grind": "5'",
+        "dose": 18,
+        "yield": 39.3,
+        "ratio": "2.2",
+        "time": "25s",
+        "comments": "Good. Maybe a tiny bitter",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b16_2",
+        "grind": "5'",
+        "dose": 19,
+        "yield": 40,
+        "ratio": "2.1",
+        "time": "33s?",
+        "comments": "Need to be coarser. Distribution uneven.",
+        "timestamp": "Log 2"
+      },
+      {
+        "id": "b16_3",
+        "grind": "5'1",
+        "dose": 20,
+        "yield": 42,
+        "ratio": "2.1",
+        "time": "29s",
+        "comments": "",
+        "timestamp": "Log 3"
+      },
+      {
+        "id": "b16_4",
+        "grind": "5'2",
+        "dose": 20,
+        "yield": 41,
+        "ratio": "2.1",
+        "time": "28s",
+        "comments": "",
+        "timestamp": "Log 4"
+      }
+    ]
+  },
+  {
+    "id": "c17",
+    "name": "Heart Kenya Gichathaini AB",
+    "rating": 3,
+    "finalRecipe": "",
+    "brews": [
+      {
+        "id": "b17_1",
+        "grind": "5'1",
+        "dose": 20,
+        "yield": 42,
+        "ratio": "2.1",
+        "time": "18s",
+        "comments": "",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b17_2",
+        "grind": "5",
+        "dose": 20,
+        "yield": 40,
+        "ratio": "2.0",
+        "time": "18s",
+        "comments": "",
+        "timestamp": "Log 2"
+      },
+      {
+        "id": "b17_3",
+        "grind": "4'2",
+        "dose": 20,
+        "yield": 43.7,
+        "ratio": "2.2",
+        "time": "22s",
+        "comments": "",
+        "timestamp": "Log 3"
+      }
+    ]
+  },
+  {
+    "id": "c18",
+    "name": "Olympia Espiritu Wari",
+    "rating": 4,
+    "finalRecipe": "",
+    "brews": [
+      {
+        "id": "b18_1",
+        "grind": "4'1",
+        "dose": 17.8,
+        "yield": 40,
+        "ratio": "2.2",
+        "time": "38s",
+        "comments": "",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b18_2",
+        "grind": "4'2",
+        "dose": 18,
+        "yield": 39,
+        "ratio": "2.2",
+        "time": "32s",
+        "comments": "",
+        "timestamp": "Log 2"
+      },
+      {
+        "id": "b18_3",
+        "grind": "4'2",
+        "dose": 18,
+        "yield": 37.7,
+        "ratio": "2.1",
+        "time": "28s",
+        "comments": "",
+        "timestamp": "Log 3"
+      }
+    ]
+  },
+  {
+    "id": "c19",
+    "name": "Onyx Monarch",
+    "rating": 3.5,
+    "finalRecipe": "5'1, 17g to 36g, 25s + 120g whole milk + 4 ice (A lot richer!)",
+    "brews": [
+      {
+        "id": "b19_1",
+        "grind": "5",
+        "dose": 17.8,
+        "yield": 37.8,
+        "ratio": "2.1",
+        "time": "35s",
+        "comments": "",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b19_2",
+        "grind": "5'1",
+        "dose": 18,
+        "yield": 39.9,
+        "ratio": "2.2",
+        "time": "32s",
+        "comments": "Kinda plain",
+        "timestamp": "Log 2"
+      },
+      {
+        "id": "b19_3",
+        "grind": "6",
+        "dose": 18,
+        "yield": 47,
+        "ratio": "2.6",
+        "time": "26s",
+        "comments": "+ 4x milk. Better. Maybe whole milk.",
+        "timestamp": "Log 3"
+      },
+      {
+        "id": "b19_4",
+        "grind": "5'2",
+        "dose": 18,
+        "yield": 38.5,
+        "ratio": "2.1",
+        "time": "25s",
+        "comments": "+130g soy, no ice.",
+        "timestamp": "Log 4"
+      },
+      {
+        "id": "b19_5",
+        "grind": "5'2",
+        "dose": 18,
+        "yield": 48,
+        "ratio": "2.7",
+        "time": "30s",
+        "comments": "130g whole. 2 ice.",
+        "timestamp": "Log 5"
+      },
+      {
+        "id": "b19_6",
+        "grind": "5'1",
+        "dose": 17,
+        "yield": 36,
+        "ratio": "2.1",
+        "time": "25s",
+        "comments": "120g whole. 4 ice. A lot richer!!",
+        "timestamp": "Log 6"
+      }
+    ]
+  },
+  {
+    "id": "c20",
+    "name": "Nirvana Querocoto",
+    "rating": 4,
+    "finalRecipe": "4'2, 18g to 47.6g, 35s (+120g water + 8 ice. Good!)",
+    "brews": [
+      {
+        "id": "b20_1",
+        "grind": "5",
+        "dose": 18,
+        "yield": 39,
+        "ratio": "2.2",
+        "time": "26s",
+        "comments": "Too acidic",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b20_2",
+        "grind": "4'2",
+        "dose": 18,
+        "yield": 47.6,
+        "ratio": "2.6",
+        "time": "35s",
+        "comments": "Espresso good. +120g water + 8 ice.",
+        "timestamp": "Log 2"
+      }
+    ]
+  },
+  {
+    "id": "c21",
+    "name": "Coffee Buff 米兰庄园",
+    "rating": 4,
+    "finalRecipe": "4'2, 18.1g to 40g, 21s (+145g milk & 10 mini ice)",
+    "brews": [
+      {
+        "id": "b21_1",
+        "grind": "4'2",
+        "dose": 18.1,
+        "yield": 40,
+        "ratio": "2.2",
+        "time": "21s",
+        "comments": "+145g milk & 10 mini ice. Good!",
+        "timestamp": "Log 1"
+      }
+    ]
+  },
+  {
+    "id": "c22",
+    "name": "M2M 热带公路",
+    "rating": 3.5,
+    "finalRecipe": "",
+    "brews": [
+      {
+        "id": "b22_1",
+        "grind": "4'2",
+        "dose": 17.9,
+        "yield": 43.6,
+        "ratio": "2.4",
+        "time": "36s",
+        "comments": "Too bitter",
+        "timestamp": "Log 1"
+      },
+      {
+        "id": "b22_2",
+        "grind": "5",
+        "dose": 17.9,
+        "yield": 39.6,
+        "ratio": "2.2",
+        "time": "34s",
+        "comments": "Ok.",
+        "timestamp": "Log 2"
+      },
+      {
+        "id": "b22_3",
+        "grind": "5'1",
+        "dose": 18.2,
+        "yield": 39.3,
+        "ratio": "2.2",
+        "time": "25s",
+        "comments": "Good. A tiny acidic",
+        "timestamp": "Log 3"
+      }
+    ]
+  }
+]
