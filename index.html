@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Coffee Brew Tracker</title>
+  
+  <!-- Standalone & PWA Meta Tags for iOS & Android -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="CoffeeTracker">
+  <meta name="theme-color" content="#6f4e37" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1816" media="(prefers-color-scheme: dark)">
+
+  <style>
+    :root {
+      --bg-color: #f7f5f0;
+      --card-bg: #ffffff;
+      --text-color: #2b2623;
+      --text-muted: #6b635b;
+      --accent-color: #6f4e37;
+      --accent-hover: #543b29;
+      --border-color: #e2ded4;
+      --error-color: #d9534f;
+      --radius: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #1a1816;
+        --card-bg: #262320;
+        --text-color: #ede9e3;
+        --text-muted: #aa9f94;
+        --accent-color: #a67c52;
+        --accent-hover: #c49568;
+        --border-color: #3b3631;
+        --error-color: #ff6b6b;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.5;
+      padding: env(safe-area-inset-top, 20px) 16px env(safe-area-inset-bottom, 20px) 16px;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    header {
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      color: var(--accent-color);
+    }
+
+    header p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    input:focus {
+      border-color: var(--accent-color);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--accent-color);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      margin-top: 6px;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .error-msg {
+      color: var(--error-color);
+      font-size: 0.85rem;
+      display: none;
+      margin-top: 4px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .section-header h2 {
+      font-size: 1.2rem;
+    }
+
+    .clear-btn {
+      background: none;
+      border: none;
+      color: var(--error-color);
+      font-size: 0.85rem;
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+
+    .clear-btn:hover {
+      text-decoration: underline;
+    }
+
+    .history-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .history-item {
+      padding: 12px 14px;
+      background-color: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .history-item .details {
+      display: flex;
+      gap: 16px;
+    }
+
+    .history-item .val {
+      font-weight: 600;
+    }
+
+    .history-item .ratio {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      align-self: center;
+    }
+
+    .history-item .timestamp {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .empty-state {
+      text-align: center;
+      color: var(--text-muted);
+      padding: 16px 0;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <header>
+      <h1>☕ Coffee Tracker</h1>
+      <p>Log your dose, yield, and extraction ratios</p>
+    </header>
+
+    <!-- Entry Form -->
+    <section class="card">
+      <form id="coffeeForm" novalidate>
+        <div class="form-group">
+          <label for="dose">Dose (g)</label>
+          <input 
+            type="number" 
+            id="dose" 
+            name="dose" 
+            placeholder="e.g. 18" 
+            step="0.1" 
+            min="0.1" 
+            max="1000"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="yield">Yield (g)</label>
+          <input 
+            type="number" 
+            id="yield" 
+            name="yield" 
+            placeholder="e.g. 36" 
+            step="0.1" 
+            min="0.1" 
+            max="5000"
+            required
+          >
+        </div>
+
+        <div id="errorMsg" class="error-msg">Please enter valid positive numbers for Dose and Yield.</div>
+
+        <button type="submit" class="btn-submit">Save Brew</button>
+      </form>
+    </section>
+
+    <!-- History List -->
+    <section class="card">
+      <div class="section-header">
+        <h2>Brew History</h2>
+        <button id="clearHistoryBtn" class="clear-btn" type="button">Clear All</button>
+      </div>
+      <ul id="historyList" class="history-list"></ul>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const STORAGE_KEY = 'coffee_tracker_entries_v1';
+
+      const form = document.getElementById('coffeeForm');
+      const doseInput = document.getElementById('dose');
+      const yieldInput = document.getElementById('yield');
+      const errorMsg = document.getElementById('errorMsg');
+      const historyList = document.getElementById('historyList');
+      const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+
+      function loadLogs() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          return raw ? JSON.parse(raw) : [];
+        } catch (e) {
+          return [];
+        }
+      }
+
+      function saveLogs(logs) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(logs));
+        } catch (e) {
+          showError('Storage is full or disabled on your device.');
+        }
+      }
+
+      function renderHistory() {
+        const logs = loadLogs();
+        historyList.replaceChildren();
+
+        if (logs.length === 0) {
+          const empty = document.createElement('li');
+          empty.className = 'empty-state';
+          empty.textContent = 'No recorded brews yet. Enter your values above!';
+          historyList.appendChild(empty);
+          return;
+        }
+
+        logs.forEach((log) => {
+          const li = document.createElement('li');
+          li.className = 'history-item';
+
+          const detailsDiv = document.createElement('div');
+          detailsDiv.className = 'details';
+
+          const doseSpan = document.createElement('span');
+          doseSpan.textContent = `Dose: ${log.dose}g`;
+
+          const yieldSpan = document.createElement('span');
+          yieldSpan.textContent = `Yield: ${log.yield}g`;
+
+          const ratioSpan = document.createElement('span');
+          ratioSpan.className = 'ratio';
+          ratioSpan.textContent = `(1:${log.ratio})`;
+
+          detailsDiv.appendChild(doseSpan);
+          detailsDiv.appendChild(yieldSpan);
+          detailsDiv.appendChild(ratioSpan);
+
+          const timeSpan = document.createElement('span');
+          timeSpan.className = 'timestamp';
+          timeSpan.textContent = log.timestamp;
+
+          li.appendChild(detailsDiv);
+          li.appendChild(timeSpan);
+
+          historyList.appendChild(li);
+        });
+      }
+
+      function showError(msg) {
+        errorMsg.textContent = msg;
+        errorMsg.style.display = 'block';
+      }
+
+      function hideError() {
+        errorMsg.style.display = 'none';
+      }
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        hideError();
+
+        const doseVal = parseFloat(doseInput.value);
+        const yieldVal = parseFloat(yieldInput.value);
+
+        if (isNaN(doseVal) || isNaN(yieldVal) || doseVal <= 0 || yieldVal <= 0) {
+          showError('Please enter valid positive numbers for Dose and Yield.');
+          return;
+        }
+
+        const ratio = (yieldVal / doseVal).toFixed(1);
+        const dateStr = new Date().toLocaleString(undefined, {
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+
+        const newLog = {
+          id: Date.now(),
+          dose: doseVal,
+          yield: yieldVal,
+          ratio: ratio,
+          timestamp: dateStr
+        };
+
+        const logs = loadLogs();
+        logs.unshift(newLog);
+        saveLogs(logs);
+
+        form.reset();
+        doseInput.focus();
+        renderHistory();
+      });
+
+      clearHistoryBtn.addEventListener('click', function () {
+        if (loadLogs().length === 0) return;
+        localStorage.removeItem(STORAGE_KEY);
+        renderHistory();
+      });
+
+      renderHistory();
+    })();
+  </script>
+</body>
+</html>
