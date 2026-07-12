@@ -90,7 +90,7 @@
       font-family: var(--font-body);
       font-size: 1.45rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       color: var(--text-primary);
       display: flex;
       align-items: center;
@@ -153,11 +153,11 @@
       border-color: var(--text-muted);
     }
 
-    /* Filter & Sort Bar (Right-Aligned Dropdowns) */
-    .filter-bar {
+    /* Filter & Sort Section */
+    .filter-section {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
 
     .search-box {
@@ -176,24 +176,75 @@
       color: var(--text-muted);
     }
 
-    .filter-controls {
+    /* Sleek Horizontal Filter Chips Bar */
+    .filter-pills-row {
       display: flex;
-      justify-content: flex-end;
+      align-items: center;
+      justify-content: space-between;
       gap: 8px;
     }
 
-    .filter-select {
-      max-width: 155px;
-      padding: 6px 10px;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
+    .filter-chips-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .filter-chips-group::-webkit-scrollbar {
+      display: none;
+    }
+
+    .chip-btn {
       background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
       color: var(--text-primary);
-      font-size: 0.78rem;
+      padding: 5px 12px;
+      border-radius: 16px;
+      font-size: 0.76rem;
       font-weight: 600;
-      outline: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+      font-family: var(--font-body);
+    }
+
+    .chip-btn.active {
+      background-color: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+    }
+
+    .sort-dropdown-custom {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .sort-select-custom {
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 5px 22px 5px 10px;
+      border-radius: 16px;
+      font-size: 0.76rem;
+      font-weight: 600;
       font-family: var(--font-body);
       cursor: pointer;
+      outline: none;
+    }
+
+    .sort-icon-arrow {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      pointer-events: none;
     }
 
     .coffee-list {
@@ -202,7 +253,7 @@
       gap: 12px;
     }
 
-    /* Clean Card Design with Photo Thumbnail */
+    /* Clean Unsquished Card Design */
     .coffee-card {
       background-color: var(--card-bg);
       border: 1px solid var(--border-color);
@@ -219,10 +270,10 @@
       user-select: none;
     }
 
-    /* Coffee Bag Drawing Thumbnail */
+    /* Coffee Bag Thumbnail */
     .coffee-thumb {
-      width: 48px;
-      height: 48px;
+      width: 46px;
+      height: 46px;
       border-radius: 10px;
       object-fit: cover;
       border: 1px solid var(--border-color);
@@ -233,19 +284,19 @@
     .coffee-info {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 4px;
       flex: 1;
       min-width: 0;
     }
 
+    /* Unsquished Multiline Title */
     .coffee-name {
       font-family: var(--font-body);
-      font-size: 1.02rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      line-height: 1.35;
+      letter-spacing: 0;
+      word-break: break-word;
     }
 
     .coffee-meta {
@@ -569,27 +620,30 @@
       </div>
     </header>
 
-    <div class="filter-bar">
+    <div class="filter-section">
       <input type="text" id="searchInput" class="search-box" placeholder="Search coffees or roasters...">
       
-      <!-- Right-Aligned Sort & Filter Controls -->
-      <div class="filter-controls">
-        <select id="sortSelect" class="filter-select">
-          <option value="default">Sort: Default</option>
-          <option value="rating_desc">Rating (High → Low)</option>
-          <option value="rating_asc">Rating (Low → High)</option>
-          <option value="name_asc">Name (A → Z)</option>
-          <option value="name_desc">Name (Z → A)</option>
-          <option value="brews_desc">Most Brewed</option>
-        </select>
+      <!-- Sleek Mobile Filter Pills & Custom Sort Bar -->
+      <div class="filter-pills-row">
+        <div class="filter-chips-group">
+          <button class="chip-btn active" data-rating="all">All</button>
+          <button class="chip-btn" data-rating="5">5★</button>
+          <button class="chip-btn" data-rating="4">4★+</button>
+          <button class="chip-btn" data-rating="3">3★+</button>
+          <button class="chip-btn" data-rating="unrated">Unrated</button>
+        </div>
 
-        <select id="ratingFilterSelect" class="filter-select">
-          <option value="all">Rating: All</option>
-          <option value="5">5★ Only</option>
-          <option value="4">4★ and above</option>
-          <option value="3">3★ and above</option>
-          <option value="unrated">Unrated</option>
-        </select>
+        <div class="sort-dropdown-custom">
+          <select id="sortSelect" class="sort-select-custom">
+            <option value="default">Sort: Default</option>
+            <option value="rating_desc">Rating (High → Low)</option>
+            <option value="rating_asc">Rating (Low → High)</option>
+            <option value="name_asc">Name (A → Z)</option>
+            <option value="name_desc">Name (Z → A)</option>
+            <option value="brews_desc">Most Brewed</option>
+          </select>
+          <span class="sort-icon-arrow">▾</span>
+        </div>
       </div>
     </div>
 
@@ -773,7 +827,7 @@
         <div class="sync-title">GitHub API Settings</div>
         <div class="form-group">
           <label for="ghOwner">GitHub Username</label>
-          <input type="text" id="ghOwner" placeholder="e.g. celinetao" required>
+          <input type="text" id="ghOwner" placeholder="e.g. xilintao-cmd" required>
         </div>
         <div class="form-group">
           <label for="ghRepo">Repository Name</label>
@@ -834,10 +888,6 @@
         }).join(''));
       }
 
-      /**
-       * Client-Side HTML5 Canvas Image Downscaler for iOS Camera & Gallery Uploads
-       * Automatically compresses 12MP/48MP raw iPhone camera photos down to lightweight ~30KB thumbnails
-       */
       function compressImage(file, maxSide, quality, callback) {
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -1160,6 +1210,7 @@
       ];
 
       let coffeeData = [];
+      let activeRatingFilter = 'all';
       let tempUploadedPhoto = null;
       let tempEditUploadedPhoto = null;
 
@@ -1167,7 +1218,8 @@
       const coffeeList = document.getElementById('coffeeList');
       const searchInput = document.getElementById('searchInput');
       const sortSelect = document.getElementById('sortSelect');
-      const ratingFilterSelect = document.getElementById('ratingFilterSelect');
+      const chipBtns = document.querySelectorAll('.chip-btn');
+
       const exportBtn = document.getElementById('exportBtn');
       const importBtn = document.getElementById('importBtn');
       const importFileInput = document.getElementById('importFileInput');
@@ -1267,17 +1319,16 @@
 
         const query = searchInput.value.trim().toLowerCase();
         const sortMode = sortSelect.value;
-        const ratingFilter = ratingFilterSelect.value;
 
         // 1. Text Search Filter
         let filtered = coffeeData.filter(c => c.name.toLowerCase().includes(query));
 
-        // 2. Rating Filter
-        if (ratingFilter !== 'all') {
-          if (ratingFilter === 'unrated') {
+        // 2. Rating Filter Pills
+        if (activeRatingFilter !== 'all') {
+          if (activeRatingFilter === 'unrated') {
             filtered = filtered.filter(c => !c.rating);
           } else {
-            const minVal = parseFloat(ratingFilter);
+            const minVal = parseFloat(activeRatingFilter);
             filtered = filtered.filter(c => c.rating && c.rating >= minVal);
           }
         }
@@ -1301,7 +1352,7 @@
         if (filtered.length === 0) {
           const empty = document.createElement('div');
           empty.className = 'empty-state card';
-          empty.textContent = query || ratingFilter !== 'all'
+          empty.textContent = query || activeRatingFilter !== 'all'
             ? 'No coffee beans match your search/filter criteria.'
             : 'No entries found. Click "+ New" to add one.';
           coffeeList.appendChild(empty);
@@ -1540,7 +1591,17 @@
         m.addEventListener('click', (e) => { if (e.target === m) closeModal(m); });
       });
 
-      // Photo Upload Handlers with Automatic Canvas Downscaling for iOS Camera & Gallery
+      // Rating Filter Pill Chips
+      chipBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          chipBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeRatingFilter = btn.dataset.rating;
+          renderList();
+        });
+      });
+
+      // Photo Upload Handlers
       coffeePhotoInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -1700,10 +1761,9 @@
         if (updatedCard) updatedCard.classList.add('expanded');
       });
 
-      // Filter & Search Handlers
+      // Search & Sort Handlers
       searchInput.addEventListener('input', renderList);
       sortSelect.addEventListener('change', renderList);
-      ratingFilterSelect.addEventListener('change', renderList);
 
       // Export Backup JSON
       exportBtn.addEventListener('click', () => {
@@ -1758,7 +1818,7 @@
        */
       openStorageModalBtn.addEventListener('click', () => {
         const cfg = getGhConfig() || {};
-        document.getElementById('ghOwner').value = cfg.owner || '';
+        document.getElementById('ghOwner').value = cfg.owner || 'xilintao-cmd';
         document.getElementById('ghRepo').value = cfg.repo || 'coffee-tracker';
         document.getElementById('ghBranch').value = cfg.branch || 'main';
         document.getElementById('ghToken').value = cfg.token || '';
