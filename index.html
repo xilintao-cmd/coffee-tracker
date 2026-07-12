@@ -78,29 +78,33 @@
       margin-top: 4px;
     }
 
-    /* Minimal Header with Blue Heart */
+    /* Minimal Intentional Header (Single-Line Guarantee) */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 4px 0;
+      padding: 4px 0 2px 0;
+      gap: 8px;
     }
 
     header h1 {
       font-family: var(--font-body);
-      font-size: 1.45rem;
+      font-size: 1.2rem;
       font-weight: 700;
       letter-spacing: -0.01em;
       color: var(--text-primary);
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 4px;
+      flex-shrink: 0;
     }
 
     .btn-text-nav {
@@ -108,11 +112,12 @@
       border: none;
       color: var(--text-primary);
       font-family: var(--font-body);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      padding: 6px 10px;
+      padding: 5px 8px;
       border-radius: var(--radius-btn);
       cursor: pointer;
+      white-space: nowrap;
       transition: background-color 0.15s ease;
     }
 
@@ -121,14 +126,15 @@
     }
 
     .btn-primary {
-      padding: 8px 16px;
+      padding: 6px 14px;
       background-color: var(--accent-blue);
       color: #ffffff;
       border: none;
-      border-radius: 20px;
+      border-radius: 18px;
       font-family: var(--font-body);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
+      white-space: nowrap;
       cursor: pointer;
       transition: opacity 0.15s ease;
     }
