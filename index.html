@@ -817,6 +817,59 @@
     </div>
   </div>
 
+  <!-- MODAL: Edit Brew Attempt Entry -->
+  <div id="editBrewModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Edit Brew Attempt</h2>
+        <button class="close-btn" data-close="editBrewModal">&times;</button>
+      </div>
+      <form id="editBrewForm">
+        <input type="hidden" id="editBrewCoffeeId">
+        <input type="hidden" id="editBrewId">
+        
+        <div class="form-grid-3" style="margin-bottom: 10px;">
+          <div class="form-group">
+            <label for="editGrindSettingSelect">Grind</label>
+            <select id="editGrindSettingSelect" required></select>
+          </div>
+          <div class="form-group">
+            <label for="editTimeTakenInput">Time</label>
+            <div class="input-unit-wrapper">
+              <input type="number" id="editTimeTakenInput" step="1" min="1" max="600" placeholder="25" required>
+              <span class="input-unit-suffix">s</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="editTempInput">Temp</label>
+            <div class="input-unit-wrapper">
+              <input type="number" id="editTempInput" step="1" min="60" max="100" value="90" placeholder="90" required>
+              <span class="input-unit-suffix">°C</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid" style="margin-bottom: 10px;">
+          <div class="form-group">
+            <label for="editDoseVal">Dose In (g)</label>
+            <input type="number" id="editDoseVal" step="0.1" value="18" required>
+          </div>
+          <div class="form-group">
+            <label for="editYieldVal">Yield Out (g)</label>
+            <input type="number" id="editYieldVal" step="0.1" value="36" required>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label for="editBrewComments">Tasting Notes / Comments</label>
+          <textarea id="editBrewComments" placeholder="e.g. Sweeter finish, balanced acidity..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Update Brew Entry</button>
+      </form>
+    </div>
+  </div>
+
   <!-- MODAL 3: Edit Coffee Details & Rating -->
   <div id="editCoffeeModal" class="modal-overlay">
     <div class="modal-content">
@@ -920,7 +973,7 @@
     (function () {
       'use strict';
 
-      const STORAGE_KEY = 'coffee_journal_data_v3';
+      const STORAGE_KEY = 'coffee_journal_data_v4';
       const GH_CONFIG_KEY = 'coffee_journal_gh_config_v1';
 
       // Drawing-Style Coffee Bag Placeholder SVG (Data URI)
@@ -1297,11 +1350,13 @@
       // Modals
       const addCoffeeModal = document.getElementById('addCoffeeModal');
       const addBrewModal = document.getElementById('addBrewModal');
+      const editBrewModal = document.getElementById('editBrewModal');
       const editCoffeeModal = document.getElementById('editCoffeeModal');
 
       const openAddCoffeeBtn = document.getElementById('openAddCoffeeBtn');
       const addCoffeeForm = document.getElementById('addCoffeeForm');
       const addBrewForm = document.getElementById('addBrewForm');
+      const editBrewForm = document.getElementById('editBrewForm');
       const editCoffeeForm = document.getElementById('editCoffeeForm');
 
       const coffeePhotoInput = document.getElementById('coffeePhotoInput');
@@ -1309,8 +1364,11 @@
       const editCoffeePhotoInput = document.getElementById('editCoffeePhotoInput');
       const editPhotoPreview = document.getElementById('editPhotoPreview');
 
+      const editGrindSettingSelect = document.getElementById('editGrindSettingSelect');
+
       function populateGrindOptions() {
         grindSettingSelect.replaceChildren();
+        if (editGrindSettingSelect) editGrindSettingSelect.replaceChildren();
         for (let i = 1; i <= 12; i++) {
           const steps = [`${i}`, `${i}'1`, `${i}'2`];
           steps.forEach(step => {
@@ -1319,11 +1377,16 @@
             opt.textContent = step;
             if (step === "5'1") opt.selected = true;
             grindSettingSelect.appendChild(opt);
+
+            if (editGrindSettingSelect) {
+              const opt2 = opt.cloneNode(true);
+              editGrindSettingSelect.appendChild(opt2);
+            }
           });
         }
       }
 
-      function loadData() {
+      async function loadData() {
         try {
           const raw = localStorage.getItem(STORAGE_KEY);
           if (raw) {
@@ -1331,7 +1394,11 @@
             if (Array.isArray(parsed) && parsed.length > 0) {
               parsed.forEach(c => {
                 if (!c.roastLevel) c.roastLevel = "Unknown";
-                if (c.photo === undefined) c.photo = null;
+
+                // Clear any non-custom photo URLs so all beans fall back to the cute drawing illustration
+                if (!c.photo || !c.photo.startsWith('data:image')) {
+                  c.photo = null;
+                }
               });
 
               const vertigo = parsed.find(c => c.id === 'c1' || c.name.includes('Vertigo Guatemala Hunapu'));
@@ -1345,6 +1412,20 @@
         } catch (e) {
           console.error(e);
         }
+
+        try {
+          const response = await fetch('./coffees.json');
+          if (response.ok) {
+            const fetchedData = await response.json();
+            if (Array.isArray(fetchedData) && fetchedData.length > 0) {
+              saveDataToStorage(fetchedData);
+              return fetchedData;
+            }
+          }
+        } catch (e) {
+          console.error('Failed to load coffees.json:', e);
+        }
+
         saveDataToStorage(DEFAULT_DATASET);
         return DEFAULT_DATASET;
       }
@@ -1617,6 +1698,15 @@
                 }
               });
 
+              const editBrewBtn = document.createElement('button');
+              editBrewBtn.className = 'target-btn';
+              editBrewBtn.textContent = 'Edit';
+              editBrewBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openEditBrewModal(coffee.id, brew);
+              });
+
+              actionsDiv.appendChild(editBrewBtn);
               actionsDiv.appendChild(targetBtn);
               actionsDiv.appendChild(delBrewBtn);
 
@@ -1644,7 +1734,7 @@
         });
       });
 
-      [addCoffeeModal, addBrewModal, editCoffeeModal, storageModal].forEach(m => {
+      [addCoffeeModal, addBrewModal, editBrewModal, editCoffeeModal, storageModal].forEach(m => {
         m.addEventListener('click', (e) => { if (e.target === m) closeModal(m); });
       });
 
@@ -1812,6 +1902,69 @@
         coffee.brews.unshift(newBrew);
         saveData();
         closeModal(addBrewModal);
+        renderList();
+
+        const updatedCard = coffeeList.querySelector(`[data-id="${coffee.id}"]`);
+        if (updatedCard) updatedCard.classList.add('expanded');
+      });
+
+      function openEditBrewModal(coffeeId, brew) {
+        document.getElementById('editBrewCoffeeId').value = coffeeId;
+        document.getElementById('editBrewId').value = brew.id;
+        
+        editGrindSettingSelect.value = brew.grind;
+        // time might have 's'
+        let rawTime = brew.time;
+        if (rawTime && rawTime.endsWith('s')) rawTime = rawTime.slice(0, -1);
+        document.getElementById('editTimeTakenInput').value = rawTime !== 'N/A' ? rawTime : '';
+        
+        let rawTemp = brew.temp;
+        if (rawTemp && rawTemp.endsWith('°C')) rawTemp = rawTemp.slice(0, -2);
+        document.getElementById('editTempInput').value = rawTemp;
+        
+        document.getElementById('editDoseVal').value = brew.dose;
+        document.getElementById('editYieldVal').value = brew.yield;
+        document.getElementById('editBrewComments').value = brew.comments || '';
+        
+        openModal(editBrewModal);
+      }
+
+      editBrewForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const coffeeId = document.getElementById('editBrewCoffeeId').value;
+        const brewId = document.getElementById('editBrewId').value;
+        const grind = editGrindSettingSelect.value;
+        const rawTime = document.getElementById('editTimeTakenInput').value.trim();
+        const rawTemp = document.getElementById('editTempInput').value.trim();
+        const dose = parseFloat(document.getElementById('editDoseVal').value);
+        const yieldOut = parseFloat(document.getElementById('editYieldVal').value);
+        const comments = document.getElementById('editBrewComments').value.trim();
+
+        if (isNaN(dose) || isNaN(yieldOut) || dose <= 0 || yieldOut <= 0) {
+          alert('Please enter valid numbers for Dose and Yield.');
+          return;
+        }
+
+        const coffee = coffeeData.find(c => c.id === coffeeId);
+        if (!coffee) return;
+        const brew = coffee.brews.find(b => b.id === brewId);
+        if (!brew) return;
+
+        let formattedTime = rawTime;
+        if (rawTime && !rawTime.endsWith('s')) formattedTime = `${rawTime}s`;
+        let formattedTemp = rawTemp ? `${rawTemp}°C` : '90°C';
+        const ratio = (yieldOut / dose).toFixed(1);
+
+        brew.grind = grind || 'N/A';
+        brew.dose = dose;
+        brew.yield = yieldOut;
+        brew.ratio = ratio;
+        brew.time = formattedTime || 'N/A';
+        brew.temp = formattedTemp;
+        brew.comments = comments;
+
+        saveData();
+        closeModal(editBrewModal);
         renderList();
 
         const updatedCard = coffeeList.querySelector(`[data-id="${coffee.id}"]`);
@@ -1996,8 +2149,10 @@
 
       // Init
       populateGrindOptions();
-      coffeeData = loadData();
-      renderList();
+      loadData().then(data => {
+        coffeeData = data;
+        renderList();
+      });
     })();
   </script>
 </body>
